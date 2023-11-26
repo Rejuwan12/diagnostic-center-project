@@ -1,15 +1,64 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
-
-    const links = <>
-     <NavLink to={"/"}><li><a>Home</a></li></NavLink>
-     <NavLink to={"/login"}><li><a>Login</a></li></NavLink>
-     <NavLink to={"/signUp"}><li><a>Sign Up</a></li></NavLink>
+  const { user, logOut } = useAuth();
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+       
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "log out successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {console.error(error)
+      
+        Swal.fire({
+          position: "top-center",
+          icon: "question",
+          title: "Logout Failed",
+          showConfirmButton: true,    
+        });
+      });
+  };
+  const links = (
+    <>
+      <NavLink to={"/"}>
+        <li>
+          <p>Home</p>
+        </li>
+      </NavLink>
+      <NavLink to={"/login"}>
+        <li>
+          <p>Login</p>
+        </li>
+      </NavLink>
+      <NavLink to={"/signUp"}>
+        <li>
+          <p>Sign Up</p>
+        </li>
+      </NavLink>
+      <NavLink to={"/allTest"}>
+        <li>
+          <p>All Test</p>
+        </li>
+      </NavLink>
+      <NavLink to={"/appointment"}>
+        <li>
+          <p>Appointment</p>
+        </li>
+      </NavLink>
     </>
-    
+  );
+
   return (
-    <div className="navbar bg-gray-400">
+    <div className="navbar fixed mx-auto max-w-screen-lg opacity-50 bg-green-400">
+      
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -32,18 +81,37 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-           {links}
+            {links}
           </ul>
         </div>
-        <img className="btn btn-ghost text-xl" src="../../../../images/logo.png"></img>
+        <img
+          className="btn btn-ghost text-xl"
+          src="../../../../images/logo.png"
+        ></img>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-         {links}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        {user ? (
+          <>
+            <div className="flex items-center gap-3">
+              <img
+                className="rounded-full w-[40px]"
+                src={user.photoURL}
+                alt=""
+              />
+              <span className="mr-2">{user.displayName}</span>
+            </div>
+            <button onClick={handleLogOut} className="btn btn-sm">
+              LogOut
+            </button>
+          </>
+        ) : (
+          <Link to="/login">
+            <button className="btn btn-ghost">Login</button>
+          </Link>
+        )}
       </div>
     </div>
   );

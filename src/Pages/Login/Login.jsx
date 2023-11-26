@@ -1,7 +1,75 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
+import useAxiosPublic from './../../Hooks/useAxiosPublic';
+
+
+
 
 
 const Login = () => {
+  const navigate = useNavigate();
+ const{signGoogle, loginUser} =useAuth();
+ const axiosPublic= useAxiosPublic();
+
+
+ const hanldeLogin = e =>{
+
+  e.preventDefault()
+  const email = e.target.email.value ;
+  const password = e.target.password.value ;
+
+  loginUser(email, password)
+  .then(result => {
+    console.log(result.user)
+    e.target.reset();
+    Swal.fire({
+      title: "login Success",
+      text: "logged succesfully?",
+      icon: "success"
+    })
+    navigate( location?.state ? location.state : '/');
+  })
+  .catch(error => {console.error(error)
+    Swal.fire({
+      title: "login Failed",
+      text: "login  Failed",
+      icon: "question"
+    })
+    
+  })
+}
+ 
+  
+  const handleGoogle = () => {
+      signGoogle()
+        .then(res => {
+      console.log(res.user);
+      const info ={
+        email: res.user?.email,
+        name: res.user?.displayName
+    }
+    axiosPublic.post('/users', info)
+    .then(res => {
+        console.log(res.data);
+        navigate('/')
+    })
+      Swal.fire({
+        title: "login Success",
+        text: "logged succesfully?",
+        icon: "success"
+      })
+      navigate('/');
+    })
+    .catch(error => {
+      console.error(error);
+      Swal.fire({
+        title: "logged faild",
+        text: "user logged feil",
+        icon: "question"
+      })
+    })
+    }
     return (
         <div>
       
@@ -14,7 +82,7 @@ const Login = () => {
           Enter your details to login.
         </p>
         <form
-          
+          onSubmit={hanldeLogin}
           className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
         >
           <div className="mb-4 flex flex-col gap-6">
@@ -82,7 +150,7 @@ const Login = () => {
           <p className="text-center">Login With Google</p>
           <img
             src='../../../images/google.png'
-           
+             onClick={handleGoogle}
             className="w-[100px] ml-[140px] rounded-xl  mb-2 p-2 bg-slate-200 cursor-pointer"
             alt=""
           />
