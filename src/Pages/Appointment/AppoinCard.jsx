@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 import ApppoinService from "./ApppoinService";
+import AppoinSubmit from "./AppoinSubmit";
 
 
 
@@ -26,7 +27,7 @@ const AppoinCard = () => {
                 <div className="card-body">
                   <h3 className="card-title text-center items-center">{service.title}</h3>
                   
-                  
+                   {/* <AppoinSubmit/> */}
                 </div>
               </div>)
                } 

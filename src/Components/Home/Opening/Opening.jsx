@@ -5,7 +5,7 @@ const Opening = () => {
     return (
        <div>
        
-         <div className="flex justify-evenly gap-10  mb-8 text-center items-center" >
+         <div className="flex justify-evenly gap-10 mt-12 mb-8 text-center items-center" >
             <div className="bg-red-500 p-6 flex rounded-lg w-[354px] h-[100px]">
                 <div className=''>
                     <FaClock/>

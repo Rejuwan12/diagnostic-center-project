@@ -38,11 +38,6 @@ const Navbar = () => {
           <p>Login</p>
         </li>
       </NavLink>
-      <NavLink to={"/signUp"}>
-        <li>
-          <p>Sign Up</p>
-        </li>
-      </NavLink>
       <NavLink to={"/allTest"}>
         <li>
           <p>All Test</p>
@@ -53,11 +48,16 @@ const Navbar = () => {
           <p>Appointment</p>
         </li>
       </NavLink>
+      <NavLink to={"/dashboard"}>
+        <li>
+          <p>Dashboard</p>
+        </li>
+      </NavLink>
     </>
   );
 
   return (
-    <div className="navbar fixed mx-auto max-w-screen-lg opacity-50 bg-green-400">
+    <div className="navbar z-10 fixed bg-white/10 backdrop:blur mx-auto max-w-screen-lg font-bold  text-sky-500">
       
       <div className="navbar-start">
         <div className="dropdown">

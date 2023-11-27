@@ -1,0 +1,46 @@
+[
+    {
+        "_id": "1",
+        "name": "CBC(Complete Blood Count)",
+        "image": "https://i.ibb.co/j6dNLJ8/cbc.jpg",
+        "price": 39.99,
+        "details": " A complete blood count, or CBC, is a blood test that measures many different parts and features of your blood, including: Red blood cells, which carry oxygen from your lungs to the rest of your body. White blood cells, which fight infections and other diseases. A complete blood count (CBC) is a blood test. It's used to look at overall health and find a wide range of conditions, including anemia, infection and leukemia. Red blood cells, which carry oxygen White blood cells, which fight infection Hemoglobin, the oxygen-carrying protein in red blood cells Hematocrit, the amount of red blood cells in the blood Platelets, which help blood to clot A complete blood count can show unusual increases or decreases in cell counts. Those changes might point to a medical condition that calls for more testing. ",
+        "short_details": "A complete blood count, or CBC, is a blood test that measures many different parts and features of your blood, including: Red blood cells, which carry oxygen from your lungs to the rest of your body. White blood cells, which fight infections and other diseases.",
+        "doctor_img": "https://i.ibb.co/n08y7zR/team-2-jpg.webp",
+        "doctor_name": "Dr. Saidullah Khan",
+        "doctor_jobs": "Plastic Surgeon",
+        "doctor_icons": "https://i.ibb.co/ZTMJzgL/ss-2-removebg-preview.png",
+        "offer_title":"Advanced equipment",
+        "offer_details": "Robotic surgical systems,dvanced diagnostic equipment like PCR machines for DNA testing etc "
+  
+      },
+      { 
+        "_id": "2",  
+        "name": "Urine Test",
+        "image": "https://i.ibb.co/Jdf6WvD/urine-test.jpg",
+        "price": 19.99,
+        "details": "A urine test, also known as a urinalysis, is a common medical test that involves analyzing a person's urine to evaluate their overall health and detect various medical conditions. Urine contains waste products and can provide valuable information about the body's functions and potential health issues. Here are some key aspects of a urine test Routine Checkup: As part of a regular physical examination. o diagnose or monitor conditions such as diabetes, kidney disease, urinary tract infections, and liver disease. Drug Screening: To detect the presence of drugs or medications in the system.Pregnancy: To confirm pregnancy through a urine-based pregnancy test Monitoring Treatment: To assess the effectiveness of treatment for certain medical conditions If you have specific questions or concerns about a urine test, it's best to consult with",
+        "short_details": "A urine test, also known as a urinalysis, is a common medical test that involves analyzing a person's urine to evaluate their overall health and detect various medical conditions. Urine contains waste products and can provide valuable information about the body's",
+        "doctor_img": "https://i.ibb.co/KxWc9Tm/team-3-jpg.webp",
+        "doctor_name": "Dr. Hafizullah",
+        "doctor_jobs": "Medicine Physician",
+        "doctor_icons": "https://i.ibb.co/ZTMJzgL/ss-2-removebg-preview.png",
+        "offer_title":"Certified services",
+        "offer_details": "These certifications ensure that they meet certain standards and qualifications to provide healthcare services."
+        
+      },
+      {
+        "_id": "3",
+        "name": "RBS (Random Blood Sugar)",
+        "image": "https://i.ibb.co/MB90Y6P/rbs.jpg",
+        "price": 49.99,
+        "details": "This measures your blood sugar at the time you're tested. You can take this test at any time and don't need to fast (not eat) first. A blood sugar level of 200 mg/dL or higher indicates you have diabetes a random glucose test may help a doctor decide if additional testing. Random glucose testing measures a person's blood glucose levels at any given point in the day. Blood glucose is also known as blood sugar. Many blood tests for diabetes involve either fasting or continuous monitoring, but this test does not.It is useful for people who need a speedy diagnosis, such as those with type 1 diabetes who require urgent supplementary insulin. How To TEst Work? Glucose is a form of sugar. It is the body's primary energy source and fuels every cell — including those in the brain, heart, and muscles. Glucose mainly comes from food and drink people consume. The body also breaks down stored forms of the carbohydrate glycogen into glucose.The body works continuously to keep the amount of blood glucose at optimum levels. It produces a hormone called insulin to achieve this, which helps glucose get into the cells that need it for energy.A person with type 1 diabetes does not produce insulin as their body no longer makes insulin.",
+        "short_details": "This measures your blood sugar at the time you're tested. You can take this test at any time and don't need to fast (not eat) first. A blood sugar level of 200 mg/dL or higher indicates you have diabetes a random glucose test may help a doctor decide if additional testing.",
+        "doctor_img": "https://i.ibb.co/K2y6Cbv/crop-1.jpg",
+        "doctor_name": "Dr. Moniruddin",
+        "doctor_jobs": "Gastroenterologists",
+        "doctor_icons": "https://i.ibb.co/ZTMJzgL/ss-2-removebg-preview.png",
+        "offer_title":"Emergency care",
+        "offer_details": "The emergency department, patients are often assessed and prioritized based on the severity of their condition."
+      }
+]
