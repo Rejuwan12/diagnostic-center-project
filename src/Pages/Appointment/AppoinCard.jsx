@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 import ApppoinService from "./ApppoinService";
-import AppoinSubmit from "./AppoinSubmit";
+
 
 
 
@@ -26,8 +26,6 @@ const AppoinCard = () => {
                 <figure className=""><img className="rounded-es-badge w-20 h-16 object-cover " src={service.img} alt="Movie"/></figure>
                 <div className="card-body">
                   <h3 className="card-title text-center items-center">{service.title}</h3>
-                  
-                   {/* <AppoinSubmit/> */}
                 </div>
               </div>)
                } 

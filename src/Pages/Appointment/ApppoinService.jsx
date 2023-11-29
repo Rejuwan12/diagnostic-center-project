@@ -14,7 +14,7 @@ const ApppoinService = () => {
       <SectionTitle heading={"available appointments"} />
 
       <div className="grid grid-cols-3 gap-8 py-4">
-        {service.map((service) => (
+        {service.map((service, i) => (
           <div key={service._id} className="card  bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
               <img src={service.img} alt="Shoes" className="rounded-xl" />
@@ -27,17 +27,17 @@ const ApppoinService = () => {
                 <button
                   className="btn btn-outline btn-success"
                   onClick={() =>
-                    document.getElementById("my_modal_5").showModal()
+                    document.getElementById(`my_modal_${i}`).showModal()
                   }
                 >
                   Book Appoinment
                 </button>
                 <dialog
-                  id="my_modal_5"
+                  id={`my_modal_${i}`}
                   className="modal modal-bottom sm:modal-middle"
                 >
                   <div className="modal-box">
-                    <AppoinSubmit />
+                    <AppoinSubmit heading={service?.title} />
                     <div className="modal-action">
                       <form method="dialog">
                         {/* if there is a button in form, it will close the modal */}

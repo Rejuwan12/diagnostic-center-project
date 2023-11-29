@@ -47,12 +47,16 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        updateUser(data.name, data.photoURL,data.email,)
+        updateUser(data.name, data.photoURL,)
         .then(()=>{
           const users={
             name: data.name,
             email: data.email,
             photoURL: data.photoURL,
+            upazila: data.upazilas,
+            districts: data.districts,
+            blood_group: data.group,
+            password:data.password
           }
           axiosPublic.post('/users', users)
           .then(res => {

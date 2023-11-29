@@ -10,6 +10,8 @@ import AppoinComming from "../Pages/Dashboard/AppointmentPages/AppoinComming";
 import TestResult from "../Pages/Dashboard/Test/TestResult";
 import Reservation from "../Pages/Dashboard/Reservation/Reservation";
 import UserProfile from "../Pages/Dashboard/UserProfile/UserProfile";
+import TestDetails from "../Pages/AllTest/TestDetails/TestDetails";
+import AddTest from "../Pages/Dashboard/AddTest/AddTest";
 
 
 
@@ -34,6 +36,15 @@ export const Router = createBrowserRouter(
                 {
                     path:'/allTest',
                     element:<AllTest/>
+                },
+                {
+                    path:'/addTest',
+                    element:<AddTest/>
+                },
+                {
+                    path:'/allTests/:id',
+                    element:<TestDetails/>,
+                    loader: ({params}) => fetch(`http://localhost:5000/allTests/${params.id}`)
                 },
                 {
                     path:'/appointment',
