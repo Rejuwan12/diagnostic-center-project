@@ -1,13 +1,33 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import useUsers from "./../../../Hooks/useUsers";
+import { useEffect, useState } from "react";
+
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+  const [admin, setAdmin]= useState(false);
+  const [singleUser,isLoading] = useUsers();
+ 
+  // if (isLoading) {
+  //   return <p>Loading.....</p>;
+  // }
+  console.log(singleUser);
+  const userObj = { ...singleUser[0] };
+  console.log(userObj);
+  const { status, role } = userObj;
+  console.log(status, role);
+
+  useEffect(()=>{
+    if(user && role == 'admin'){
+      setAdmin(true)
+    }
+   },[role, user])
+
   const handleLogOut = () => {
     logOut()
       .then(() => {
-       
         Swal.fire({
           position: "top-center",
           icon: "success",
@@ -16,13 +36,14 @@ const Navbar = () => {
           timer: 1500,
         });
       })
-      .catch((error) => {console.error(error)
-      
+      .catch((error) => {
+        console.error(error);
+
         Swal.fire({
           position: "top-center",
           icon: "question",
           title: "Logout Failed",
-          showConfirmButton: true,    
+          showConfirmButton: true,
         });
       });
   };
@@ -48,17 +69,41 @@ const Navbar = () => {
           <p>Appointment</p>
         </li>
       </NavLink>
-      <NavLink to={"/dashboard"}>
-        <li>
-          <p>Dashboard</p>
-        </li>
-      </NavLink>
+
+       {/* {status == "block" ? (
+        ""
+      ) : (
+        <NavLink to={"/dashboard"}>
+          <div className="indicator">
+            <span className="indicator-item badge badge-secondary">99+</span>
+            <p className="p-2">Dashboard</p>
+          </div>
+        </NavLink>
+      )} */}
+      {
+        admin ? <NavLink to={"/dashboard/addTest"}>
+        <div className="indicator">
+          <span className="indicator-item badge badge-secondary">99+</span>
+          <p className="p-2">Dashboard</p>
+        </div> 
+      </NavLink>  : 
+       <NavLink to={"/dashboard/userProfile"}>
+       <div className="indicator">
+        
+         {
+          status == 'block'  ? '' :  <div>
+          <span className="indicator-item badge badge-secondary">99+</span>
+          <p className="p-2">Dashboard</p>
+          </div> 
+         }
+       </div>
+     </NavLink>
+      }
     </>
   );
 
   return (
     <div className="navbar z-10 fixed bg-white/10 backdrop:blur mx-auto max-w-screen-lg font-bold  text-sky-500">
-      
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">

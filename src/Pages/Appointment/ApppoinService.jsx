@@ -1,17 +1,37 @@
 import { useEffect, useState } from "react";
 import SectionTitle from "../../Components/SectionTitle/SectionTitle";
 import AppoinSubmit from "./AppoinSubmit";
+import useUsers from "../../Hooks/useUsers";
+import Swal from "sweetalert2";
 
 const ApppoinService = () => {
   const [service, setService] = useState([]);
+  
   useEffect(() => {
-    fetch("service.json")
+    fetch("http://localhost:5000/service")
       .then((res) => res.json())
       .then((data) => setService(data));
   }, []);
+
+  const [singleUser, isLoading] = useUsers();
+  if (isLoading) {
+    return <p>Loading.....</p>;
+  }
+  
+  const userObj = { ...singleUser[0] };
+ 
+  const { status } = userObj;
+ 
+
+  const handleBlocked= () => {
+    Swal.fire({
+      title: "user blocked",
+      icon: "question"
+    })
+  }
   return (
     <div>
-      <SectionTitle heading={"available appointments"} />
+      <SectionTitle heading={"available services"} />
 
       <div className="grid grid-cols-3 gap-8 py-4">
         {service.map((service, i) => (
@@ -24,14 +44,24 @@ const ApppoinService = () => {
               <p className="font-semibold">Deadline:{service.deadline}</p>
               <div className="card-actions">
                 {/* Open the modal using document.getElementById('ID').showModal() method */}
-                <button
-                  className="btn btn-outline btn-success"
-                  onClick={() =>
-                    document.getElementById(`my_modal_${i}`).showModal()
-                  }
-                >
-                  Book Appoinment
-                </button>
+               {
+                status == 'block' ? 
+                 <button
+                className="btn btn-outline btn-success"
+                onClick={handleBlocked}
+              >
+                Book Appoinment
+              </button>
+              :
+              <button
+              className="btn btn-outline btn-success"
+              onClick={() =>
+                document.getElementById(`my_modal_${i}`).showModal()
+              }
+            >
+              Book Appoinment
+            </button>
+               }
                 <dialog
                   id={`my_modal_${i}`}
                   className="modal modal-bottom sm:modal-middle"

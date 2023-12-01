@@ -32,7 +32,7 @@ const Login = () => {
   })
   .catch(error => {console.error(error)
     Swal.fire({
-      title: "login Failed",
+      title: "Please Register First",
       text: "login  Failed",
       icon: "question"
     })
@@ -41,35 +41,35 @@ const Login = () => {
 }
  
   
-  const handleGoogle = () => {
-      signGoogle()
-        .then(res => {
-      console.log(res.user);
-      const info ={
-        email: res.user?.email,
-        name: res.user?.displayName
-    }
-    axiosPublic.post('/users', info)
-    .then(res => {
-        console.log(res.data);
-        navigate('/')
-    })
-      Swal.fire({
-        title: "login Success",
-        text: "logged succesfully?",
-        icon: "success"
-      })
-      navigate('/');
-    })
-    .catch(error => {
-      console.error(error);
-      Swal.fire({
-        title: "logged faild",
-        text: "user logged feil",
-        icon: "question"
-      })
-    })
-    }
+  // const handleGoogle = () => {
+  //     signGoogle()
+  //       .then(res => {
+  //     console.log(res.user);
+  //     const info ={
+  //       email: res.user?.email,
+  //       name: res.user?.displayName
+  //   }
+  //   axiosPublic.post('/users', info)
+  //   .then(res => {
+  //       console.log(res.data);
+  //       navigate('/')
+  //   })
+  //     Swal.fire({
+  //       title: "login Success",
+  //       text: "logged succesfully?",
+  //       icon: "success"
+  //     })
+  //     navigate('/');
+  //   })
+  //   .catch(error => {
+  //     console.error(error);
+  //     Swal.fire({
+  //       title: "logged faild",
+  //       text: "user logged feil",
+  //       icon: "question"
+  //     })
+  //   })
+  //   }
     return (
         <div>
       
@@ -147,13 +147,13 @@ const Login = () => {
             </a>
           </p>
           <hr />
-          <p className="text-center">Login With Google</p>
+          {/* <p className="text-center">Login With Google</p>
           <img
             src='../../../images/google.png'
              onClick={handleGoogle}
             className="w-[100px] ml-[140px] rounded-xl  mb-2 p-2 bg-slate-200 cursor-pointer"
             alt=""
-          />
+          /> */}
           <hr />
         </form>
       </div>

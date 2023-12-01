@@ -1,8 +1,11 @@
 import banner from "../../../images/banner2.jpg";
 import { FaSearch } from "react-icons/fa";
 import Cetagory from "../../Components/Home/Cetagory/Cetagory";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const AllTest = () => {
+ 
   return (
     <div>
       <div className="space-x-14">

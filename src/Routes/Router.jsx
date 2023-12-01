@@ -12,6 +12,11 @@ import Reservation from "../Pages/Dashboard/Reservation/Reservation";
 import UserProfile from "../Pages/Dashboard/UserProfile/UserProfile";
 import TestDetails from "../Pages/AllTest/TestDetails/TestDetails";
 import AddTest from "../Pages/Dashboard/AddTest/AddTest";
+import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import AddService from "../Pages/Dashboard/AddService/AddService";
+import AllTests from "../Pages/Dashboard/AllTests/AllTests";
+import UpdateTests from "../Pages/Dashboard/UpdateTests/UpdateTests";
+import PrivateRoute from './../Providers/PrivateRoute';
 
 
 
@@ -38,12 +43,8 @@ export const Router = createBrowserRouter(
                     element:<AllTest/>
                 },
                 {
-                    path:'/addTest',
-                    element:<AddTest/>
-                },
-                {
                     path:'/allTests/:id',
-                    element:<TestDetails/>,
+                    element:<PrivateRoute> <TestDetails/></PrivateRoute>,
                     loader: ({params}) => fetch(`http://localhost:5000/allTests/${params.id}`)
                 },
                 {
@@ -69,9 +70,30 @@ export const Router = createBrowserRouter(
                     element:<Reservation/>
                 },
                 {
+                    path:'addService',
+                    element:<AddService/>
+                },
+                {
                     path:'userProfile',
                     element:<UserProfile/>
-                }
+                },
+                {
+                    path:'addTest',
+                    element:<AddTest/>
+                },
+                {
+                    path:'allUsers',
+                    element:<AllUsers/>
+                },
+                {
+                    path:'updateTest/:id',
+                    element:<UpdateTests/>,
+                    loader:({params}) => fetch(`http://localhost:5000/allTests/${params.id}`)
+                },
+                {
+                    path:'allTests',
+                    element:<AllTests/>
+                },
             ]
             
         }
