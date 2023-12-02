@@ -90,8 +90,8 @@ const AllTests = () => {
           <table className="table">
             {/* head */}
             <thead>
-              <p className="text-red-600 bg-gray-200 rounded-lg p-1">
-                Total User: {allTest.length}
+              <p className="text-red-600 text-center bg-gray-200 rounded-lg p-1">
+                Total Tests: {allTest.length}
               </p>
               <tr>
                 <th>#</th>

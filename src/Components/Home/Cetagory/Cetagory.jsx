@@ -4,18 +4,34 @@
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const Cetagory = () => {
+const Cetagory = ({tests}) => {
+  
   const [allTest, setAllTest] = useState([]);
   useEffect(()=>{
     fetch('http://localhost:5000/allTests')
     .then(res => res.json())
-    .then(data => setAllTest(data))
-  },[])
+    .then(data => {
+      if(tests){
+        const testCard = data?.filter(test => test.title_name.toLowerCase().includes(tests.toLowerCase()))
+      return  setAllTest(testCard)
+         
+        }
+        setAllTest(data)
+      }
+   
+    )},[tests])
+
+
+  // useEffect(()=>{
+   
+  // console.log(testCard);
+  //  setAllTest(testCard)
+  
+  // },[allTest, tests])
   return (
     <section className="text-center items-center">
       <SectionTitle heading={"---Available Tests---"} />

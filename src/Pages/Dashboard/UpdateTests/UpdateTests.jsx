@@ -49,7 +49,8 @@ const UpdateTests = () => {
         description: Details_Button,
       };
 
-      axiosSecure.put(`/allTests/${_id}`, info).then((res) => {
+      axiosSecure.put(`/allTests/${_id}`, info)
+      .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount > 0) {
           Swal.fire({

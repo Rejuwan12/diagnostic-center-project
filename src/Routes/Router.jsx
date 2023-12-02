@@ -55,7 +55,7 @@ export const Router = createBrowserRouter(
         },
         {
             path:'/dashboard',
-            element: <Dashboard/>,
+            element: <PrivateRoute><Dashboard/></PrivateRoute>,
             children:[
                 {
                     path:'upComingAppointment',
@@ -75,7 +75,9 @@ export const Router = createBrowserRouter(
                 },
                 {
                     path:'userProfile',
-                    element:<UserProfile/>
+                    element:<UserProfile/>,
+                    // loader: () => fetch(`http://localhost:5000/users`)
+                    // loader: ({params}) => fetch(`http://localhost:5000/users/${params._id}`)
                 },
                 {
                     path:'addTest',

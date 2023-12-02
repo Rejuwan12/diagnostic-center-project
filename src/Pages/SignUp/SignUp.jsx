@@ -41,12 +41,19 @@ const SignUp = () => {
       handleSubmit,
       formState: { errors },
     } = useForm();
-
+   
     const onSubmit = (data) => {
+      if(data.password !== data.confirmPassword){
+        return Swal.fire({
+          title: "password not match",
+          text: "user created succesfully!",
+          icon: "success"
+        })
+      }
       createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        // console.log(user);
+        console.log(user);
         updateUser(data.name, data.photoURL,)
         .then(()=>{
           const users={
@@ -57,8 +64,11 @@ const SignUp = () => {
             districts: data.districts,
             blood_group: data.group,
             password:data.password,
+            confirmPassword: data.confirmPassword,
             status: 'active'
           }
+          console.log(data.password, data.confirmPassword);
+         
           axiosPublic.post('/users', users)
           .then(res => {
             if(res.data.insertedId){

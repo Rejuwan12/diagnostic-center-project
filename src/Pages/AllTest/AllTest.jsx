@@ -1,11 +1,19 @@
 import banner from "../../../images/banner2.jpg";
 import { FaSearch } from "react-icons/fa";
 import Cetagory from "../../Components/Home/Cetagory/Cetagory";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import Swal from "sweetalert2";
+import { useState } from "react";
+
 
 const AllTest = () => {
- 
+
+  const [tests, setTests] = useState('');
+
+
+ const handleSearchTest = (e)=> {
+     e.preventDefault();
+   const form = e.target.search.value;
+   setTests(form);
+ }
   return (
     <div>
       <div className="space-x-14">
@@ -26,13 +34,15 @@ const AllTest = () => {
           </h1>
 
           <div>
-            <form>
+            <form onSubmit={handleSearchTest}>
               <div className="join ml-80">
                 <input
                   className="input input-bordered border-none text-blue-300 join-item"
-                  placeholder="Email"
+                  placeholder="Email" name="search"
                 />
-                <button className="btn join-item rounded-r-full">
+                <button 
+                
+                className="btn join-item rounded-r-full">
                   {" "}
                   <FaSearch />
                   Search
@@ -43,7 +53,7 @@ const AllTest = () => {
        
         </div>
       </div>
-      <Cetagory/>
+      <Cetagory tests={tests}/>
     </div>
   );
 };
