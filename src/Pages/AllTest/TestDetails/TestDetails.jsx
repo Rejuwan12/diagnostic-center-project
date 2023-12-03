@@ -3,10 +3,12 @@ import { useLoaderData } from "react-router-dom";
 import useUsers from "../../../Hooks/useUsers";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useAuth from "../../../Hooks/useAuth";
 
 
 
 const TestDetails = () => {
+  const {user} = useAuth()
   const axiosPublic = useAxiosPublic();
   const data = useLoaderData();
   const { title_name, 
@@ -40,7 +42,8 @@ const TestDetails = () => {
     title_name: title_name,
     deadline:deadline,
     price: price,
-    img_url: img_url
+    img_url: img_url,
+    email: user?.email
   }
   const handleBook= ()=>{
     axiosPublic.post('/bookTests', info )
@@ -51,6 +54,7 @@ const TestDetails = () => {
         text:` Please Go You Dashboard and Pay $ ${data.price}`,
         icon: "success"
       })
+      window.location.reload()
     })
 
   }

@@ -54,6 +54,7 @@ const AllTest = () => {
         </div>
       </div>
       <Cetagory tests={tests}/>
+      
     </div>
   );
 };

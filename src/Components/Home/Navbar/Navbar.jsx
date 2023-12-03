@@ -3,12 +3,26 @@ import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useUsers from "./../../../Hooks/useUsers";
 import { useEffect, useState } from "react";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const [admin, setAdmin]= useState(false);
   const [singleUser,isLoading] = useUsers();
+  
+  const axiosPublic = useAxiosPublic();
+    
+    const { data: bookingTest = [] } = useQuery({
+    queryKey: ["boookTest"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/bookTests");
+      const data = await res.data;
+      return data;
+    },
+   
+  })
  
   // if (isLoading) {
   //   return <p>Loading.....</p>;
@@ -83,7 +97,7 @@ const Navbar = () => {
       {
         admin ? <NavLink to={"/dashboard/addTest"}>
         <div className="indicator">
-          <span className="indicator-item badge badge-secondary">99+</span>
+          <span className="indicator-item badge badge-secondary">{bookingTest?.length}</span>
           <p className="p-2">Dashboard</p>
         </div> 
       </NavLink>  : 
@@ -92,7 +106,7 @@ const Navbar = () => {
         
          {
           status == 'block'  ? '' :  <div>
-          <span className="indicator-item badge badge-secondary">99+</span>
+          <span className="indicator-item badge badge-secondary">{bookingTest?.length}</span>
           <p className="p-2">Dashboard</p>
           </div> 
          }
@@ -129,10 +143,12 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
+        <Link to={'/'}>
         <img
-          className="btn btn-ghost text-xl"
+          className="btn  btn-ghost text-xl"
           src="../../../../images/logo.png"
         ></img>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
