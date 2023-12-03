@@ -13,7 +13,7 @@ const useUsers = () => {
         queryKey: ["singleUser", user?.email],
         queryFn: async () => {
           const res = await axiosPublic.get(`/users?email=${user?.email}`);
-          const data = await res.data;
+          const data = await  res.data;
           return data;
         },
       });

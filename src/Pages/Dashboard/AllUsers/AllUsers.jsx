@@ -85,6 +85,7 @@ const AllUsers = () => {
       }
     })
   }
+  
   const handleActiveUser = (id)=>{
     
     axiosPublic.put(`/users/${id}`,{status: 'active'})

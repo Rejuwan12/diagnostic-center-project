@@ -2,11 +2,24 @@
 import { useLoaderData } from "react-router-dom";
 import useUsers from "../../../Hooks/useUsers";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+
+
 
 const TestDetails = () => {
+  const axiosPublic = useAxiosPublic();
   const data = useLoaderData();
-  const { title_name, name, description, img_url ,price, posting_time, deadline} = data;
+  const { title_name, 
+    name,
+    
+    description, 
+    img_url
+    ,price,
+    posting_time,
+    deadline} = data;
   
+
+ 
   const [singleUser, isLoading] = useUsers();
   if (isLoading) {
     return <p>Loading.....</p>;
@@ -14,7 +27,6 @@ const TestDetails = () => {
   console.log(singleUser);
   const userObj = { ...singleUser[0] };
   console.log(userObj);
-
   const { status } = userObj;
   console.log(status);
 
@@ -24,9 +36,32 @@ const TestDetails = () => {
       icon: "question"
     })
   }
+  const info = {
+    title_name: title_name,
+    deadline:deadline,
+    price: price,
+    img_url: img_url
+  }
+  const handleBook= ()=>{
+    axiosPublic.post('/bookTests', info )
+    .then(res => {
+      console.log(res.data);
+      Swal.fire({
+        title: "Test Booking Success",
+        text:` Please Go You Dashboard and Pay $ ${data.price}`,
+        icon: "success"
+      })
+    })
+
+  }
+  
+
+
+  
   return (
     <div>
-      <div className="card sm:w-96 md:w-full  mb-4 max-h-screen bg-base-100 shadow-xl">
+     
+     <div className="card sm:w-96 md:w-full  mb-4 max-h-screen bg-base-100 shadow-xl">
         <figure>
           <img
             src={img_url}
@@ -36,7 +71,7 @@ const TestDetails = () => {
         <div className="card-body">
             <h2 className="font-bold text-blue-500 text-center bg-sky-300 p-2 rounded-full w-1/6">Posted By:{name}</h2>
             
-          <h2 className="card-title">
+          <h2  className="card-title">
             {title_name}
             <div className="badge badge-secondary">$:{price}</div>
           </h2>
@@ -46,10 +81,11 @@ const TestDetails = () => {
             <h2 className="bg-red-400 p-2 rounded-xl">Deadline: {deadline}</h2>
             
             { status == 'block' ? 
-            <button onClick={handleBlocked} className="btn btn-outline btn-success ">Book Now</button> : <button className="btn btn-outline btn-success ">Book Now</button>}
+            <button onClick={handleBlocked} className="btn btn-outline btn-success ">Book Now</button> : <button onClick={handleBook} className="btn btn-outline btn-success ">Book Now</button>}
           </div>
         </div>
       </div>
+     
     </div>
   );
 };
