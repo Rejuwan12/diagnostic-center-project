@@ -39,9 +39,9 @@ const Banner = () => {
                 </p>
                 
                 <h1 className="text-3xl font-bold my-3">
-                  discount rate{" "}
+                  Use a Coupon Code After {" "}
                   <span className="text-red-600">{banner?.couponRate}%</span>{" "}
-                  for coupon code
+                  Discount
                 </h1>
                 <h1 className="text-2xl bg-purple-500-300 rounded-xl">
                   Coupon Code : {banner?.couponCodeName}
