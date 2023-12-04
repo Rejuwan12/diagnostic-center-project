@@ -1,39 +1,67 @@
-import pic1 from "../../../../images/banner2.jpg";
-
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Banner = () => {
+  const [banners, setBanners] = useState([]);
+  useEffect(() => {
+    if (banners.length === 0) {
+      fetch("https://diagonostik-project-server.vercel.app/banners")
+        .then((res) => res.json())
+        .then((data) => setBanners(data))
+        .catch((error) => console.error("Error fetching banners:", error));
+    }
+  }, [banners]);
+  console.log(banners);
+
+  const banner = banners?.find((banner) => banner.isActive === "true");
+  console.log(banner)
+
   return (
-    <div className="space-x-14">
-      <div className="relative">
-    
-       <img
-          src={pic1}
-          className="w-full h-[250px] object-cover lg:h-[625px]"
-          alt=""
-        />
-    
-      </div>
-      <div className="absolute lg:top-[240px] top-[100px] text-white">
-        <h1 className="lg:text-5xl text-2xl ml-2  top-8 text-[#01d9fffc] 
-        font-bold flex lg:ml-[250px] ">
-          The Health is Weath  <br /> Wealth is Health
-        </h1>
-        <p className="lg:ml-[200px] lg:mt-2  lg:mb-2 p-2 font-normal text-black">
-          {" "}
-          Whatever your life’s work is, do it well. A man should do his job{" "}
-          <br /> so well that the living, the dead, and the unborn could do it
-          no better.
-        </p>
-        <button className="btn  btn-success">
-           Go To All Test
-        </button>
-        <div className="">
-           <button className="btn btn-ghost">12kh</button>
-             <h2 className="font-bold text-black">Use Coupon Code After 20% Discount!</h2>
-        </div>
-      </div>
+    <div className="z-10 ">
       
+      {
+        <div
+          key={banner?._id}
+          className="hero w-[400px] md:w-[740px] lg:w-full mx-auto bg-teal-200 rounded-b-lg mb-32"
+        >
+          <div
+            className="hero w-full h-[230px] md:h-[530px] rounded-lg"
+            style={{ backgroundImage: `url(${banner?.image})` }}
+          >
+            <div className="hero-overlay bg-opacity-80"></div>
+            <div className="hero-content text-center text-neutral-content ">
+              <div className="max-w-7xl">
+                <p className="mb-5 text-2xl md:text-4xl lg:text-7xl font-extrabold text-red-400">
+                  {banner?.bannerTitle}
+                </p>
+                <p className="mb-5   font-medium">
+                  {banner?.description}
+                </p>
+                
+                <h1 className="text-3xl font-bold my-3">
+                  discount rate{" "}
+                  <span className="text-red-600">{banner?.couponRate}%</span>{" "}
+                  for coupon code
+                </h1>
+                <h1 className="text-2xl bg-purple-500-300 rounded-xl">
+                  Coupon Code : {banner?.couponCodeName}
+                </h1>
+                <div className="form-control ">
+                  <div className="input-group flex justify-center mx-auto mt-4">
+                  
+                  </div>
+                  <NavLink
+                    to="/allTest"
+                    className="btn btn-success bg-orange-600500 mt-6 w-64 flex justify-center mx-auto text-white"
+                  >
+                  Go To  All Test
+                  </NavLink>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
     </div>
   );
 };

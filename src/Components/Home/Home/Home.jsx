@@ -1,4 +1,5 @@
 
+import Contact from "../../../Pages/Dashboard/Contact/Contact";
 import Banner from "../Banner/Banner";
 
 import Doctors from "../Doctors/Doctors";
@@ -15,6 +16,7 @@ const Home = () => {
             <Opening/>
             <Doctors/>
             <Reviews/>
+            <Contact/>
         </div>
     );
 };

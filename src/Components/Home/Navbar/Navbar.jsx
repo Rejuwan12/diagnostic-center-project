@@ -11,7 +11,7 @@ import logo from '../../../../images/logo.png'
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const [admin, setAdmin]= useState(false);
-  const [singleUser,isLoading] = useUsers();
+  const [singleUser] = useUsers();
   
   const axiosPublic = useAxiosPublic();
     

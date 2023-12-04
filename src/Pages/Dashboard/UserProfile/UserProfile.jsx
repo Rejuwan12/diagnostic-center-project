@@ -10,17 +10,13 @@ const UserProfile = () => {
   const {user} = useAuth();
 const [singleUser, setSingleUser] = useState()
 const [district, setDistrict] = useState([]);
-const [upazilas, setUpazilas] = useState([]);
+
 useEffect(()=>{
     fetch('districts.json')
     .then(res => res.json())
     .then(data => setDistrict(data))
 },[]);
-useEffect(()=>{
-    fetch('upazilas.json')
-    .then(res => res.json())
-    .then(data => setUpazilas(data))
-},[]);
+
 
 useEffect(() => {
   axiosSecure.get(`/singleUser/${user?.email}`)
