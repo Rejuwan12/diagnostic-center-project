@@ -35,7 +35,7 @@ const AppoinComming = () => {
         axiosSecure.delete(`/appoint/${id}`)
         .then((res) => {
           if (res.data.deletedCount > 0) {
-           const datas= appoint.filter(result => result._id!== id);
+           const datas= appoint?.filter(result => result._id!== id);
            setAppoint(datas)
             Swal.fire({
               title: "Cancelled!",
@@ -65,7 +65,7 @@ const AppoinComming = () => {
             </tr>
           </thead>
           <tbody>
-            {appoint.map((item, idx) => (
+            {appoint?.map((item, idx) => (
               <tr key={item._id}>
                 <th>{idx + 1}</th>
                 <td>{item.appointment_name}</td>

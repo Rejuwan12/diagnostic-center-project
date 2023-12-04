@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaCalendarCheck, FaEnvelope, FaHome, FaLine, FaReadme, FaRoute, FaServicestack, FaShoppingCart,  FaUserFriends } from 'react-icons/fa';
+import { FaCalendarCheck, FaEnvelope, FaHome, FaLandmark, FaLine, FaReadme, FaRoute, FaServicestack, FaShoppingCart,  FaUserFriends } from 'react-icons/fa';
 import { useEffect, useState } from "react";
 import useUsers from "../Hooks/useUsers";
 import useAuth from "../Hooks/useAuth";
@@ -52,6 +52,14 @@ const Dashboard = () => {
                  <FaCalendarCheck/>
                   Reservation</NavLink>
                   </li>
+                  <li><NavLink to="/dashboard/addBanner">
+                 <FaCalendarCheck/>
+                  Add Banner</NavLink>
+                  </li>
+                  <li><NavLink to="/dashboard/allBanner">
+                 <FaLandmark/>
+                  All Banner</NavLink>
+                  </li>
                 
                   </>  :
                 <>
@@ -81,7 +89,7 @@ const Dashboard = () => {
                  <FaShoppingCart/>
                  Go To Appointment Page</NavLink>
                   </li>
-               <li><NavLink to="/order/contact">
+               <li><NavLink to="/dashboard/contact">
                  <FaEnvelope/>
                    Contact </NavLink>
                   </li>

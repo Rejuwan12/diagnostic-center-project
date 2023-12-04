@@ -8,7 +8,7 @@ const ApppoinService = () => {
   const [service, setService] = useState([]);
   
   useEffect(() => {
-    fetch("http://localhost:5000/service")
+    fetch("https://diagonostik-project-server.vercel.app/service")
       .then((res) => res.json())
       .then((data) => setService(data));
   }, []);
@@ -34,7 +34,7 @@ const ApppoinService = () => {
       <SectionTitle heading={"available services"} />
 
       <div className="grid grid-cols-3 gap-8 py-4">
-        {service.map((service, i) => (
+        {service?.map((service, i) => (
           <div key={service._id} className="card  bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
               <img src={service.img} alt="Shoes" className="rounded-xl" />

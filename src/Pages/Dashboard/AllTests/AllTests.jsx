@@ -12,7 +12,7 @@ const AllTests = () => {
   const { data: allTest = [], refetch } = useQuery({
     queryKey: ["allTest"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/allTests");
+      const res = await axiosPublic.get("/showAllTest");
       const data = await res.data;
       return data;
     },
@@ -91,7 +91,7 @@ const AllTests = () => {
             {/* head */}
             <thead>
               <p className="text-red-600 text-center bg-gray-200 rounded-lg p-1">
-                Total Tests: {allTest.length}
+                Total Tests: {allTest?.length}
               </p>
               <tr>
                 <th>#</th>
@@ -104,7 +104,7 @@ const AllTests = () => {
             </thead>
             <tbody>
               {/* row 1 */}
-              {allTest.map((test, idx) => (
+              {allTest?.map((test, idx) => (
                 <tr key={test._id}>
                   <th>{idx + 1}</th>
                   <td>

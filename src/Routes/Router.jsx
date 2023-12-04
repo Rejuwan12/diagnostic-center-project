@@ -17,6 +17,9 @@ import AddService from "../Pages/Dashboard/AddService/AddService";
 import AllTests from "../Pages/Dashboard/AllTests/AllTests";
 import UpdateTests from "../Pages/Dashboard/UpdateTests/UpdateTests";
 import PrivateRoute from './../Providers/PrivateRoute';
+import Contact from "../Pages/Dashboard/Contact/Contact";
+import AddBanner from "../Pages/Dashboard/AddBanner/AddBanner";
+import AllBanner from "../Pages/Dashboard/AllBanner/AllBanner";
 
 
 
@@ -45,7 +48,7 @@ export const Router = createBrowserRouter(
                 {
                     path:'/allTests/:id',
                     element:<PrivateRoute> <TestDetails/></PrivateRoute>,
-                    loader: ({params}) => fetch(`http://localhost:5000/allTests/${params.id}`)
+                    loader: ({params}) => fetch(`https://diagonostik-project-server.vercel.app/allTests/${params.id}`)
                 },
                 {
                     path:'/appointment',
@@ -76,8 +79,8 @@ export const Router = createBrowserRouter(
                 {
                     path:'userProfile',
                     element:<UserProfile/>,
-                    // loader: () => fetch(`http://localhost:5000/users`)
-                    // loader: ({params}) => fetch(`http://localhost:5000/users/${params._id}`)
+                    // loader: () => fetch(`https://diagonostik-project-server.vercel.app/users`)
+                    // loader: ({params}) => fetch(`https://diagonostik-project-server.vercel.app/users/${params._id}`)
                 },
                 {
                     path:'addTest',
@@ -88,9 +91,21 @@ export const Router = createBrowserRouter(
                     element:<AllUsers/>
                 },
                 {
+                    path:'contact',
+                    element:<Contact/>
+                },
+                {
+                    path:'addBanner',
+                    element:<AddBanner/>
+                },
+                {
+                    path:'allBanner',
+                    element:<AllBanner/>
+                },
+                {
                     path:'updateTest/:id',
                     element:<UpdateTests/>,
-                    loader:({params}) => fetch(`http://localhost:5000/allTests/${params.id}`)
+                    loader:({params}) => fetch(`https://diagonostik-project-server.vercel.app/allTests/${params.id}`)
                 },
                 {
                     path:'allTests',

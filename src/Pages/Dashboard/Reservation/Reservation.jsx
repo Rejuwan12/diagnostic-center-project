@@ -18,7 +18,7 @@ const Reservation = () => {
     // },[])
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/bookTests`)
+        fetch(`https://diagonostik-project-server.vercel.app/bookTests`)
         .then(res => res.json())
         .then(data => {
             console.log(data);

@@ -23,7 +23,7 @@ const Doctors = () => {
 
                <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 py-4">
                {
-                    team.map(doctor => <Doctor key={doctor._id} doctor={doctor}/>)
+                    team?.map(doctor => <Doctor key={doctor._id} doctor={doctor}/>)
                 }
                </div>
             

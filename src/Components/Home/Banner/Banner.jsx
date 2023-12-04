@@ -25,14 +25,15 @@ const Banner = () => {
           <br /> so well that the living, the dead, and the unborn could do it
           no better.
         </p>
+        <button className="btn  btn-success">
+           Go To All Test
+        </button>
         <div className="">
-            <img className="w-1/4" src="../../../../images/couponn.png" alt="" />
+           <button className="btn btn-ghost">12kh</button>
              <h2 className="font-bold text-black">Use Coupon Code After 20% Discount!</h2>
         </div>
       </div>
-      <div className="text-center text-4xl font-bold mt-4">
-        <h1>Jobs By Cetegory</h1>
-      </div>
+      
     </div>
   );
 };

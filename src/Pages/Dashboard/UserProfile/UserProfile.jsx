@@ -114,7 +114,7 @@ useEffect(() => {
                 
                 >  
                     {
-                       district.map(item => <option key={item.id} value={item.name}>{item.name}</option>)
+                       district?.map(item => <option key={item.id} value={item.name}>{item.name}</option>)
                  }
              </select>
                    

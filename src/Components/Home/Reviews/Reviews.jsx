@@ -27,7 +27,7 @@ const Reviews = () => {
              <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
        
        {
-        reviews.map(review => <SwiperSlide
+        reviews?.map(review => <SwiperSlide
         key={review._id}>
             
            <div className="flex flex-col items-center mx-24 my-8">

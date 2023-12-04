@@ -5,6 +5,7 @@ import useUsers from "./../../../Hooks/useUsers";
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import logo from '../../../../images/logo.png'
 
 
 const Navbar = () => {
@@ -95,7 +96,7 @@ const Navbar = () => {
         </NavLink>
       )} */}
       {
-        admin ? <NavLink to={"/dashboard/addTest"}>
+        admin && user ? <NavLink to={"/dashboard/addTest"}>
         <div className="indicator">
           <span className="indicator-item badge badge-secondary">{bookingTest?.length}</span>
           <p className="p-2">Dashboard</p>
@@ -106,7 +107,7 @@ const Navbar = () => {
         
          {
           status == 'block'  ? '' :  <div>
-          <span className="indicator-item badge badge-secondary">{bookingTest?.length}</span>
+          
           <p className="p-2">Dashboard</p>
           </div> 
          }
@@ -146,7 +147,7 @@ const Navbar = () => {
         <Link to={'/'}>
         <img
           className="btn  btn-ghost text-xl"
-          src="../../../../images/logo.png"
+          src={logo}
         ></img>
         </Link>
       </div>

@@ -13,7 +13,7 @@ const Cetagory = ({tests}) => {
   const [lengths, setLengths] = useState([]);
   const [allTest, setAllTest] = useState([]);
   useEffect(()=>{
-    fetch(`http://localhost:5000/allTests?page=${page}`)
+    fetch(`https://diagonostik-project-server.vercel.app/allTests?page=${page}`)
     .then(res => res.json())
     .then(data => {
       if(tests){
@@ -41,7 +41,7 @@ const Cetagory = ({tests}) => {
       <SectionTitle heading={"---Available Tests---"} />
     <div className="grid grid-cols-1 p-4 md:grid-cols-3 gap-8">
     {
-      allTest.map(test =>  <div key={test._id}>
+      allTest?.map(test =>  <div key={test._id}>
       
           
             <div className="card w-full h-[600px] bg-base-100 shadow-xl">
